@@ -1,0 +1,7 @@
+---
+mysql.host: localhost
+mysql.user: username
+mysql.database: databasename
+
+api.url: https://api.example.com
+
