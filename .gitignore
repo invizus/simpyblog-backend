@@ -1,1 +1,3 @@
 config.yml
+fullchain.pem
+privkey.pem
