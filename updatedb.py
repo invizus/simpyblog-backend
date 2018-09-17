@@ -14,7 +14,7 @@ def new(content):
 #def delete(post_id)
 #def get_posts():
 
-def getContentsof(post_id):
+def getContents(post_id):
     cmd = dbsession.cursor()
     if post_id = "last":
         cmd.execute("SELECT MAX(id) FROM posts")
@@ -23,8 +23,19 @@ def getContentsof(post_id):
     post_contents = cmd.fetchone()
     return post_contents
 
-def GetLatestID():
+def getID(what):
     cmd = dbsession.cursor()
-    cmd.execute("SELECT MAX(id) FROM posts")
-    DBLatestID = cmd.fetchone()[0]
-    return DBLatestID
+    if what = "latest":
+        cmd.execute("SELECT MAX(id) FROM posts")
+        IDs = cmd.fetchone()[0]
+    elif what = "all":
+        cmd.execute("SELECT id FROM posts")
+        DBAllIDs = []
+        row = cmd.fetchone()
+        while row is not None:
+            IDs.append(row[0])
+            row = cmd.fetchone()
+    return IDs
+
+if __name__ == '__main__':
+    getID("all")

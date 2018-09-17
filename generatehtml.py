@@ -58,25 +58,17 @@ def GetPostContents(PostID):
 #    post_contents = updatedb.getContentsof(post_id)
 #    return post_contents
 
-def generate_post(post_id):
-    post_contents = []
-    if post_id = "last":
-        post_contents = updatedb.getContentsOf(last)
-        write_html(post_contents[3], post_contents)
-    #  generatePo udpatedb.idof
-    else if post_id = "all":
-    #  updatedb.idof(all)
-    else
-        post_contents = updatedb.getContentsOf(post_id)
-        write_html([post_contents[3], post_contents)
+def generate_post(post):
+    post_ids = []
+    if post == "latest":
+        post_ids = updatedb.getID("latest")
+    elif post == "all":
+        post_ids = updatedb.getID("all")
+    else:
+        post_ids = [post]
+    for ids in post_ids:
+        generate_html(updatedb.getContents(ids))
 
-
-
-#def rebuild_main():
-
-#generate_post(3)
-#generate_post(last)
-#generate_post(all)
 
 if __name__ == '__main__':
     compose()
