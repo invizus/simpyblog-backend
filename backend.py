@@ -6,6 +6,7 @@ import generatehtml
 import updatedb
 
 app = Flask(__name__)
+#see if I can move below line into __main__ before app.run
 CORS(app, resources={r"/submit/*":{"origins": core.apiURL }})
 
 @app.route('/', methods=['GET'])
@@ -24,7 +25,7 @@ def new_post():
     }
     updatedb.new(content)
     msg = "API received data."
-    generatehtml.generate_post(last)
+    generatehtml.generate_post("latest")
     generatehtml.rebuild_main()
     return msg
 

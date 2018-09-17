@@ -10,27 +10,24 @@ def new(content):
     cmd.execute(QueryInsertPost, ValuesPost)
     dbsession.commit()
 
-#def update(content, post_id):
+#def update(post_id, content):
 #def delete(post_id)
 #def get_posts():
 
 def getContents(post_id):
     cmd = dbsession.cursor()
-    if post_id = "last":
-        cmd.execute("SELECT MAX(id) FROM posts")
-        post_id = cmd.fetchone()[0]
     cmd.execute("SELECT post_author, post_title, post_date, link, post_text from posts where id like " + str(PostID))
     post_contents = cmd.fetchone()
     return post_contents
 
 def getID(what):
     cmd = dbsession.cursor()
-    if what = "latest":
+    if what == "latest":
         cmd.execute("SELECT MAX(id) FROM posts")
         IDs = cmd.fetchone()[0]
-    elif what = "all":
+    elif what == "all":
         cmd.execute("SELECT id FROM posts")
-        DBAllIDs = []
+        IDs = []
         row = cmd.fetchone()
         while row is not None:
             IDs.append(row[0])
@@ -38,4 +35,4 @@ def getID(what):
     return IDs
 
 if __name__ == '__main__':
-    getID("all")
+    print(getID("all"))
