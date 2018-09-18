@@ -1,4 +1,3 @@
-#import core
 from core import dbsession
 import time
 
@@ -16,18 +15,18 @@ def new(content):
 
 def getContents(post_id):
     cmd = dbsession.cursor()
-    cmd.execute("SELECT post_author, post_title, post_date, link, post_text from posts where id like " + str(PostID))
+    cmd.execute("SELECT post_author, post_title, post_date, link, post_text from posts where id like " + str(post_id))
     post_contents = cmd.fetchone()
     return post_contents
 
 def getID(what):
     cmd = dbsession.cursor()
+    IDs = []
     if what == "latest":
         cmd.execute("SELECT MAX(id) FROM posts")
-        IDs = cmd.fetchone()[0]
+        IDs.append(cmd.fetchone()[0])
     elif what == "all":
         cmd.execute("SELECT id FROM posts")
-        IDs = []
         row = cmd.fetchone()
         while row is not None:
             IDs.append(row[0])
