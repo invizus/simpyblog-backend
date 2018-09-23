@@ -2,11 +2,10 @@ import yaml
 import mysql.connector
 from sys import argv
 
-Config = yaml.load(open("../config.yml","r"))
+Config = yaml.load(open("config.yml","r"))
 dbsession = mysql.connector.connect(
         host = Config['mysql.host'],
-        user = Config['mysql.user'],
-        database = Config['mysql.database']
+        user = Config['mysql.user']
         )
 
 # below code block is to init new database
@@ -27,7 +26,8 @@ def init_db():
                 ''')
 
 # for new installations run this script with install argument:
-# python3 core.py install
+# python3 init-project.py install
 if __name__ == '__main__':
+    print("usage: python3 init-project.py install")
     if argv[1] == "install":
             init_db()
