@@ -6,8 +6,6 @@ import generatehtml
 import updatedb
 
 app = Flask(__name__)
-#see if I can move below line into __main__ before app.run
-CORS(app, resources={r"/submit/*":{"origins": core.apiURL }})
 
 @app.route('/', methods=['GET'])
 def index():
@@ -26,7 +24,7 @@ def new_post():
     updatedb.new(content)
     msg = "API received data."
     generatehtml.generate_post("latest")
-    generatehtml.rebuild_main()
+#    generatehtml.rebuild_main()
     return msg
 
 #def update_post(post_id, contents):
@@ -34,4 +32,5 @@ def new_post():
 #def get_posts():
 
 if __name__ == '__main__':
-        app.run(debug=True, host='0.0.0.0', ssl_context=('fullchain.pem', 'privkey.pem'))
+    CORS(app, resources={r"/submit/*":{"origins": core.apiURL }})
+    app.run(debug=True, host='0.0.0.0', ssl_context=('fullchain.pem', 'privkey.pem'))
