@@ -17,5 +17,10 @@ At the moment flask app is running with same user as your mysql account, so you 
 * various checks
 * maybe copy or git frontend and generate index pages if any
 
-## Start new project
-If you want to start new project, run `python3 init-project.py install`
+## Your project
+If you want to use this for your website
+create config.yml (using cofnig.yml.example)
+run `python3 init-project.py install`
+this will perform various checks, then will create a database.
+TODO: write manual or script how to setup Apache/nginx 
+TODO: add link to frontend
