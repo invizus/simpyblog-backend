@@ -14,7 +14,7 @@ def generate_post(post):
         post_data = updatedb.getContents(ids)
 #        write_html(generate_html(post_data), post_data[3])
 #        generate_html2(generate_html(post_data), post_data[3], post) #post_data, url, main or post entry
-        write_html2(generate_html2(post_data,post), post_data[3])
+        write_html2(generate_html2(post_data,"post"), post_data[3])
 
 def generate_html(entry):
     # look into using j2 templates in a long run
@@ -32,14 +32,14 @@ def generate_html(entry):
            '''.format(entry[1], entry[4], entry[0], entry[2])
 
 def generate_html2(entry, content_type):
-    if content_type = post:
-        return render_template('template/post.html', post_title=entry[1], post_body=entry[4], post_author=entry[0], post_date=entry[2])
-    elif content_type = main:
-        return render_template('template/main.html', post_title=entry[1], post_body=entry[4], post_author=entry[0], post_date=entry[2])
+    if content_type == "post":
+        return render_template('post.html', post_title=entry[1], post_body=entry[4], post_author=entry[0], post_date=entry[2])
+    elif content_type == "main":
+        return render_template('main.html', post_title=entry[1], post_body=entry[4], post_author=entry[0], post_date=entry[2])
 
-def write_html2(data, filename)
+def write_html2(data, filename):
     html = open(filename, "w")
-    html.write(data)
+    html.write(str(data))
     html.close()
 
 def write_html(contents, filename):
