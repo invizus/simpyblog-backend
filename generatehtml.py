@@ -17,7 +17,6 @@ def generate_post(post):
         write_html2(generate_html2(post_data,"post"), post_data[3])
 
 def generate_html(entry):
-    # look into using j2 templates in a long run
     #Author = PostContents[0]    #Title = PostContents[1]    #Date = PostContents[2]    #Contents = entry[4]
     contents = '''            <div class="post">
                 <section class="post">
@@ -52,8 +51,11 @@ def write_html(contents, filename):
 
 def generate_main():
     post_ids = updatedb.getID("all")
+    main_content = []
     for ids in post_ids:
         post_data = updatedb.getContents(ids)
+        main_content.append(post_data)
+    write_html2(generate_html2(main_content,"main"), "main.html")
 #        generate_html(post_data)
 #        generate_html2(post_data, "index.html", main)
 #        write_html2(generate_html2(post_data, main), "index.html")
