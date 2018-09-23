@@ -40,6 +40,7 @@ def write_html2(data, filename):
     html = open(filename, "w")
     html.write(str(data))
     html.close()
+#TODO copy to directory from config.yml
 
 def write_html(contents, filename):
     html = open(filename, "w")
