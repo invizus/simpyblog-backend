@@ -1,5 +1,6 @@
 import updatedb
 from flask import render_template
+import core
 
 def generate_post(post):
     post_ids = [] # maybe incorrect below not sure as getID returns array - need to append maybe?
@@ -32,9 +33,9 @@ def generate_html(entry):
 
 def generate_html2(entry, content_type):
     if content_type == "post":
-        return render_template('post.html', post_title=entry[1], post_body=entry[4], post_author=entry[0], post_date=entry[2])
+        return render_template('main.html', post_title=entry[1], post_body=entry[4], post_author=entry[0], post_date=entry[2], header_link="no", blog_title=core.blog_title)
     elif content_type == "main":
-        return render_template('main.html', post_title=entry[1], post_body=entry[4], post_author=entry[0], post_date=entry[2])
+        return render_template('main.html', post_title=entry[1], post_body=entry[4], post_author=entry[0], post_date=entry[2], header_link="yes", blog_title=core.blog_title)
 
 def write_html2(data, filename):
     html = open(filename, "w")

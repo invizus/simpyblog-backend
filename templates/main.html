@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
     <link rel="stylesheet" href="css/blog.css">
-    <title>Roman blog</title>
+    <title>{{ blog_title }}</title>
 </head>
 <body>
     <div class="pure-g">
@@ -26,8 +26,11 @@
 
             <div class="post">
                 <section class="post">
+		{% if header_link == "yes" %}
                     <h1><a href="{{ post_url }}">{{ post_title }}</a></h1>
-
+		{% else %}
+                    <h1>{{ post_title }}</h1>
+		{% endif %}
                         <p> {{ post_body }} </p>
 
                 <p class="content-subhead">{{ post_author }}, Date: {{ post_date }} UTC</p>

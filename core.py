@@ -8,4 +8,4 @@ dbsession = mysql.connector.connect(
         database = Config['mysql.database']
         )
 apiURL = Config['api.url']
-
+blog_title = Config['website.title']

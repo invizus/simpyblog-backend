@@ -5,3 +5,4 @@ mysql.database: databasename
 
 api.url: https://api.example.com
 
+website.title: Simpyblog
