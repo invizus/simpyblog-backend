@@ -9,3 +9,4 @@ dbsession = mysql.connector.connect(
         )
 apiURL = Config['api.url']
 blog_title = Config['website.title']
+website_dir = Config['website.dir']
