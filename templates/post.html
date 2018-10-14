@@ -1,0 +1,40 @@
+    {% extends "main.html" %}
+    {% block header %}<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="css/blog.css">
+    {% endblock %}
+    {% block content %}
+    <div class="pure-g">
+        {% block top_menu %}
+        <div class="pure-menu pure-menu-horizontal pure-u-1">
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="/" class="pure-menu-link">What I wrote</a></li>
+                <li class="pure-menu-item"><a href="/about.html" class="pure-menu-link">Who I am</a></li>
+                <li class="pure-menu-item"><a href="/projects.html" class="pure-menu-link">What I did so far</a></li>
+                <li class="pure-menu-item"><a href="/motivate.html" class="pure-menu-link">Motivate yourself</a></li>
+            </ul>
+        </div>
+        {% endblock %}
+        <div class="content pure-u-1 pure-u-md-3-4">
+
+
+            <div class="post">
+                <section class="post">
+		{% if header_link == "yes" %}
+                    <h1><a href="{{ post_url }}">{{ post_title }}</a></h1>
+		{% else %}
+                    <h1>{{ post_title }}</h1>
+		{% endif %}
+                        <p> {{ post_body }} </p>
+
+                <p class="content-subhead">{{ post_author }}, Date: {{ post_date }} UTC</p>
+                </section>
+            </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    {% endblock %}
