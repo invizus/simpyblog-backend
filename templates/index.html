@@ -18,11 +18,11 @@
         {% endblock %}
         <div class="content pure-u-1 pure-u-md-3-4">
 
-{% for items in dict_list %}
+{% for items in dict_list|reverse %}
             <div class="post">
                 <section class="post">
                     <h1><a href="{{ items.post_url }}">{{ items.post_title }}</a></h1>
-                        <p> {{ items.post_body }} </p>
+                        <p> {{ items.post_body|safe }} </p>
 
                 <p class="content-subhead">{{ items.post_author }}, Date: {{ items.post_date }} UTC</p>
                 </section>
