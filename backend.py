@@ -23,7 +23,7 @@ def new_post():
     }
     updatedb.new(content)
     msg = "API received data."
-    generatehtml.generate_post("latest")
+    generatehtml.create_post("latest")
     return msg
 
 #def update_post(post_id, contents):

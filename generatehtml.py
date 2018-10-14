@@ -48,6 +48,7 @@ def write_html(data, filename):
 def rebuild_index():
     """ Rebuilds index page of the blog. """
     post_ids = updatedb.getID("all")
+    post_dict = []
     for ids in post_ids:
         post_data = updatedb.getContents(ids)
         post_dict.append(dict(post_title = post_data[1], post_author = post_data[0], post_url = post_data[3], post_date = post_data[2], post_body = post_data[4]))

@@ -18,20 +18,16 @@
         {% endblock %}
         <div class="content pure-u-1 pure-u-md-3-4">
 
-
+{% for items in dict_list %}
             <div class="post">
                 <section class="post">
-		{% if header_link == "yes" %}
-                    <h1><a href="{{ post_url }}">{{ post_title }}</a></h1>
-		{% else %}
-                    <h1>{{ post_title }}</h1>
-		{% endif %}
-                        <p> {{ post_body }} </p>
+                    <h1><a href="{{ items.post_url }}">{{ items.post_title }}</a></h1>
+                        <p> {{ items.post_body }} </p>
 
-                <p class="content-subhead">{{ post_author }}, Date: {{ post_date }} UTC</p>
+                <p class="content-subhead">{{ items.post_author }}, Date: {{ items.post_date }} UTC</p>
                 </section>
             </div>
-
+{% endfor %}
             </div>
         </div>
 
