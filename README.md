@@ -10,8 +10,8 @@ At the moment flask app is running with same user as your mysql account, so you 
 
 ### What is not working yet:
 #### main backend
-* generate main index.html page
-* copy files to your web server folder
+* ~~generate main index.html page~~
+* ~~copy files to your web server folder~~
 #### init-project script
 * config to include path to your web server folder
 * various checks

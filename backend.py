@@ -33,7 +33,7 @@ def rebuild_main():
     return msg
 
 @app.route('/api/rebuild/all', methods=['GET'])
-def rebuild_main():
+def rebuild_all():
     msg = "Rebuilt main page."
     generatehtml.rebuild_index()
     generatehtml.create_post("all")
