@@ -26,6 +26,20 @@ def new_post():
     generatehtml.create_post("latest")
     return msg
 
+@app.route('/api/rebuild/index', methods=['GET'])
+def rebuild_main():
+    msg = "Rebuilt main page."
+    generatehtml.rebuild_index()
+    return msg
+
+@app.route('/api/rebuild/all', methods=['GET'])
+def rebuild_main():
+    msg = "Rebuilt main page."
+    generatehtml.rebuild_index()
+    generatehtml.create_post("all")
+    return msg
+
+
 #def update_post(post_id, contents):
 #def delete_post(post_id):
 #def get_posts():
