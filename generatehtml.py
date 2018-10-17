@@ -25,6 +25,7 @@ def create_post(post):
     else:
         post_ids = [post]
     for ids in post_ids:
+        post_dict.clear()
         post_data = updatedb.getContents(ids)
         post_dict.append(dict(post_title = post_data[1], post_author = post_data[0], post_url = post_data[3], post_date = post_data[2], post_body = post_data[4]))
         write_html(render_post(post_dict), post_data[3])
