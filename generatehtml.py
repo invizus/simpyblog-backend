@@ -21,6 +21,7 @@ def create_post(post):
     if post == "latest":
         post_ids = updatedb.getID("latest")
     elif post == "all":
+        print("Generating all posts pages.")
         post_ids = updatedb.getID("all")
     else:
         post_ids = [post]
@@ -28,32 +29,40 @@ def create_post(post):
         post_dict.clear()
         post_data = updatedb.getContents(ids)
         post_dict.append(dict(post_title = post_data[1], post_author = post_data[0], post_url = post_data[3], post_date = post_data[2], post_body = post_data[4]))
+        print(" loop: write file " + post_data[3] + " for title: " + post_data[1])
         write_html(render_post(post_dict), post_data[3])
     rebuild_index()
 
 def render_post(dict_list):
     """ Renreds html structure of the post with jinja2 template. Expecting dictionary containing only one post. """
+    print("Rendering html structure of the post.")
     return render_template(POST_TEMPLATE, dict_list=dict_list, blog_title=core.blog_title)
 
 def render_index(dict_list):
     """ Renders html structure of the post with jinja2 template. Expecting dictionary with all the posts as list. """
+    print("Rendering index")
     return render_template(INDEX_TEMPLATE, dict_list=dict_list, blog_title=core.blog_title)
 
 def write_html(data, filename):
     """ Simple function to write contents into file. """
+    print("Writing file.. " + filename)
     fullpath = core.website_dir + filename
     html = open(fullpath, "w")
     html.write(str(data))
     html.close()
+    print(" closed file "+filename)
 
 def rebuild_index():
     """ Rebuilds index page of the blog. """
     post_ids = updatedb.getID("all")
     post_dict = []
+    print("Building all articles")
     for ids in post_ids:
         post_data = updatedb.getContents(ids)
         post_dict.append(dict(post_title = post_data[1], post_author = post_data[0], post_url = post_data[3], post_date = post_data[2], post_body = post_data[4]))
+        print(" queued article id " + post_dict[-1]["post_title"])
     write_html(render_index(post_dict), INDEX_HTML)
+    print("Building index done. Written " + INDEX_HTML)
 
 if __name__ == '__main__':
     print("run pythion3 backend.py")

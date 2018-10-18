@@ -34,8 +34,7 @@ def rebuild_main():
 
 @app.route('/api/rebuild/all', methods=['GET'])
 def rebuild_all():
-    msg = "Rebuilt main page."
-    generatehtml.rebuild_index()
+    msg = "Rebuilt main page and posts."
     generatehtml.create_post("all")
     return msg
 
