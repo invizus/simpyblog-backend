@@ -1,6 +1,6 @@
 # simpyblog-backend
 
-# Status: in development
+# Status: discontinued
 
 This is working blog made for learning and educational purpose. It is implemented as front-end using REST API and back-end to use MySQL as datastore and generate static HTML pages.
 
